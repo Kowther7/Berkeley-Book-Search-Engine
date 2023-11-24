@@ -3,6 +3,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_GETSINGLEUSER } from '../utils/queries';
 import { REMOVE_BOOK } from '../utils/mutations';
 import {
+  
   Container,
   Card,
   Button,
@@ -44,11 +45,11 @@ const SavedBooks = () => {
   }
   return (
     <>
-      <Jumbotron fluid className="text-light bg-dark">
+      <div fluid className="text-light bg-dark">
         <Container>
           <h1>Viewing {userData.username}'s books!</h1>
         </Container>
-      </Jumbotron>
+      </div>
       <Container>
         <h2>
           {userData.savedBooks?.length
@@ -57,7 +58,7 @@ const SavedBooks = () => {
               }:`
             : 'You have no saved books!'}
         </h2>
-        <CardColumns>
+        <div>
           {userData.savedBooks?.map((book) => {
             return (
               <Card key={book.bookId} border="dark">
@@ -82,7 +83,7 @@ const SavedBooks = () => {
               </Card>
             );
           })}
-        </CardColumns>
+        </div>
       </Container>
     </>
   );
