@@ -23,13 +23,13 @@ const resolvers = {
     login: async(_,args)=>{
         const user = await User.findOne({ $or: [{ username: args.username }, { email: args.email }] });
         if (!user) {
-            throw GraphQLError("User not authenticated!")
+            throw new GraphQLError("User not authenticated!")
         }
     
         const correctPw = await user.isCorrectPassword(args.password);
     
         if (!correctPw) {
-            throw GraphQLError("User not authenticated!")
+            throw new GraphQLError("User not authenticated!")
         }
         const token = signToken(user);
         return { token, user };

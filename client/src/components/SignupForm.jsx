@@ -48,8 +48,10 @@ const SignupForm = () => {
     
     } catch (err) {
       console.error(err);
-     
+      // Handle the error, e.g., set an error state or display a message
+      alert('An error occurred. Please try again.');
     }
+    
 
     setUserFormData({
       username: '',
